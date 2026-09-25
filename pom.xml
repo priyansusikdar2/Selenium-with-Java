@@ -14,6 +14,7 @@
         <selenium.version>4.46.0</selenium.version>
         <testng.version>7.11.0</testng.version>
         <commons.io.version>2.20.0</commons.io.version>
+        <extentreports.version>5.1.2</extentreports.version>
         <exec.mainClass>org.example.Main</exec.mainClass>
     </properties>
 
@@ -36,6 +37,12 @@
             <artifactId>commons-io</artifactId>
             <version>${commons.io.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,6 +54,17 @@
                 <configuration>
                     <mainClass>${exec.mainClass}</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.4</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
